@@ -1,0 +1,72 @@
+create database biblioteca;
+use biblioteca;
+
+create table Livros (
+	id int primary key,
+    titulo varchar(100),
+    ano_publicacao year,
+    id_autor int,
+    foreign key (id_autor) references Autores, 
+    id_categoria int,
+    foreign key (id_categoria) references Categorias
+);
+
+create table Autores (
+	id int primary key,
+    nome varchar(100),
+    nacionalidade varchar (50)
+);
+
+create table Categorias (
+	id int primary key,
+    descricao varchar(50)
+);
+
+show databases;
+
+desc Livros;
+desc Autores;
+desc Categorias;
+
+alter table Livros add column preco decimal(5.2);
+alter table Categorias add column quantidade int;
+
+insert into Livros values 
+(3247624, 'A Cúpula de Uma Viúva', '1823', 726-134, 1281399, 84.52),
+(8462812, 'A Falsa Princesa do Gelo', '1982', 443-624, 6346564, 64.46),
+(3829413, 'A Verdadeira História de Dom Casmurro', '1503', 344-564, 7361846, 76.77);
+
+insert into Autores values
+(726-134, 'Júlio Royer Chaves da Cunha', 'Brasileiro'),
+(443-624, 'Izabella da Costa Codo', 'Brasileira'),
+(344-564, 'Guilhermino de La Cruz Almeida Cristal', 'Português');
+
+insert into Categorias values
+(1281399, 'Terror, Suspense, Sanguináreo, Ficção'),
+(6346564, 'Suspense, Infanto-Juvenil'),
+(7361846, 'Histórico');
+
+insert into Autores values
+(433-572, 'Afrodite', 'Maldiva');
+
+insert into Livros values
+(3642713, 'A Regra Do Amor', '1239', 433-572, 73628461, 98.53);
+
+insert into Categorias values
+(73628461, 'Romance, Psicologia, Conselho, Coach');
+
+-- 4 a) nao tem descricao com id = 1
+
+update livro set preco = 8.452 where idLivro=3247624;
+update livro set preco = 6.446 where idLivro=8462812;
+update livro set preco = 7.677 where idLivro=3829413;
+update livro set preco = 9.853 where idLivro=73628461;
+
+update autor set nome = 'Gabriel García Márquez' where idAutor = 344-564;
+
+delete from livro where anoPubli = 1949;
+set foreign_key_checks = 0;
+
+delete from categoria where quantidade<5;
+
+alter table categoria drop column quantidade;
