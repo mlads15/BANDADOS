@@ -1,6 +1,8 @@
 create database biblioteca;
 use biblioteca;
 
+-- resposta da 1 acima --
+
 create table Livros (
 	id int primary key,
     titulo varchar(100),
@@ -21,6 +23,8 @@ create table Categorias (
 	id int primary key,
     descricao varchar(50)
 );
+
+-- resposta da 2 acima --
 
 show databases;
 
@@ -55,6 +59,8 @@ insert into Livros values
 insert into Categorias values
 (73628461, 'Romance, Psicologia, Conselho, Coach');
 
+-- resposta da 3 acima --
+
 -- 4 a) nao tem descricao com id = 1
 
 update livro set preco = 8.452 where idLivro=3247624;
@@ -69,4 +75,8 @@ set foreign_key_checks = 0;
 
 delete from categoria where quantidade<5;
 
+-- resposta da 5 acima --
+
 alter table categoria drop column quantidade;
+
+-- resposta da 6 acima --
