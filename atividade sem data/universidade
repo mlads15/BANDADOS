@@ -1,0 +1,26 @@
+create database universidade;
+use universidade;
+
+create table professor(
+	codProf int primary key,
+    nomeProf varchar(40) not null,
+    area varchar(30) not null,
+    cpf char(11),
+    dataNasc date not null
+);
+
+create table disciplina(
+	codDisc int primary key,
+    ch char(10) not null,
+    nomeDisc varchar(35) not null
+);
+
+create table ministra(
+	codDisc int not null,
+    codProf int not null,
+    primary key(codDisc, CodProf),
+    foreign key(codDisc) references disciplina(codDisc),
+    foreign key(codProf) references professor(codProf)
+);
+
+alter table professor add formacao varchar(30);
