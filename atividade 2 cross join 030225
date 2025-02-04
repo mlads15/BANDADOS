@@ -1,0 +1,20 @@
+create database loja;
+use loja;
+
+create table produtos (
+    id int primary key,
+    nome_produto varchar(50),
+    preco_produto decimal(7,2)
+);
+
+insert into produtos (id, nome_produto, preco_produto) values (1, 'Camiseta', 50.00), (2, 'Calça', 120.00), (3, 'Jaqueta', 200.00);
+
+create table descontos (
+    id int primary key,
+    percentual decimal(5,2)
+);
+
+insert into descontos (id, percentual) values (1, 5.00), (2, 10.00), (3, 15.00);
+
+select produtos.nome_produto, descontos.percentual as percentual_desconto, (produtos.preco_produto - (produtos.preco_produto * descontos.percentual / 100)) 
+	as preco_com_desconto from produtos cross join descontos;
