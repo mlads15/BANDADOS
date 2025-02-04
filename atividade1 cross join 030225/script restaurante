@@ -1,0 +1,21 @@
+create database restaurante;
+use restaurante;
+
+
+create table pratos (
+    id int primary key,
+    nome_prato varchar(50),
+    preco_prato decimal(5,2)
+);
+
+insert into pratos (id, nome_prato, preco_prato) values (1, 'Pizza Margherita', 25.00), (2, 'Hambúrguer', 20.00), (3, 'Lasanha', 30.00);
+
+create table bebidas (
+    id int primary key,
+    nome_bebida varchar(50),
+    preco_bebida decimal(5,2)
+);
+
+insert into bebidas (id, nome_bebida, preco_bebida) values (1, 'Refrigerante lata 350ml', 5.00), (2, 'Suco Natural 600ml', 8.00), (3, 'Água', 3.00);
+
+select pratos.nome_prato, bebidas.nome_bebida, (pratos.preco_prato + bebidas.preco_bebida) AS preco_total from pratos cross join bebidas;
